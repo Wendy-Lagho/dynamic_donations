@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
 
         <div class="flex">
-            <x-sidebar></x-sidebar>
+            
             <main class="flex-1">
                 @yield('content')
             </main>
