@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 
 use App\Livewire\Dashboard;
 
+
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 
 Route::get('/', function () {
@@ -14,6 +15,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', Dashboard::class)->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dash_profile', function () {
+    return view('/dash_profile');
+});
+
 Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
