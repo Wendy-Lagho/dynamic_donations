@@ -170,7 +170,7 @@ footer {
     </section>
 
     <!-- Donate Section -->
-    
+
     <!-- Number section -->
     <div class="numbers-section" id="numbers">
         <div class="number-card">
@@ -183,6 +183,63 @@ footer {
         </div>
     </div>
 
+    <!-- Testimonials-->
+    <section class="testimonials-section" id="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonials-container"> <!-- Add a wrapper for the testimonial cards -->
+            <div class="testimonial-card">
+                <!-- Testimonial content for the first card -->
+                    <img src="images/profile1.jpeg" alt="Profile 1" class="profile-picture">
+                    <div class="testimonial-text">
+                        <p>"Tabib Health has been a lifesaver for me! Managing my medications and prescriptions has never been easier.
+                            The app's user-friendly interface and secure features give me peace of mind."</p>
+                        <p class="testimonial-author">- John Doe</p>
+                    </div>
+            </div>
+
+            <div class="testimonial-card">
+                <!-- Testimonial content for the second card -->
+                <img src="images/profile2.png" alt="Profile 2" class="profile-picture">
+                <div class="testimonial-text">
+                    <p>"As a doctor, I highly recommend Tabib Health to all my patients.
+                        It streamlines the prescription process and helps me stay organized with my patients' medical records.
+                        A fantastic tool!"</p>
+                    <p class="testimonial-author">- Jack Doe</p>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <!-- Testimonial content for the third card -->
+                <img src="images/profile3.jpeg" alt="Profile 3" class="profile-picture">
+                <div class="testimonial-text">
+                    <p>"I've been using Tabib Health for a while now, and it has made a significant difference in my pharmacy workflow.
+                        The drug dispensing tool saves time and reduces errors. Kudos to the team behind this brilliant app!"</p>
+                    <p class="testimonial-author">- Mike Johnson</p>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="images/profile4.jpeg" alt="Profile 4" class="profile-picture">
+                <div class="testimonial-text">
+                    <p>"I love how Tabib Health allows me to access my medical records and prescriptions on the go.
+                        It's convenient and secure, giving me full control over my health information."</p>
+                    <p class="testimonial-author">- Sarah Wilson</p>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="images/profile5.jpeg" alt="Profile 5" class="profile-picture">
+                <div class="testimonial-text">
+                    <p>"Tabib Health has transformed the way I manage my health.
+                        From scheduling doctor appointments to getting prescription reminders, it keeps everything in one place.
+                        Highly recommended!"</p>
+                    <p class="testimonial-author">- Alex Johnson</p>
+                </div>
+            </div>
+
+            <!-- Add more testimonial cards here -->
+        </div>
+    </section>
     <main>
         <div class="main-content" id="main-feature">
             <!-- Home Section with Background Image -->
