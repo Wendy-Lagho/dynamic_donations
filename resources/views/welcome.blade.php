@@ -251,7 +251,7 @@ body {
     font-family: Chalkduster;
     font-size: 60px;
     margin-top: 0;
-    color: #005000; /* Set heading text color to #005000 (dark green) */
+    color: #633f21;
 }
 
 .contact-form label {
@@ -268,11 +268,11 @@ body {
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #005000; /* Set text color to #005000 (dark green) */
+    color: #96663e;
 }
 
 .contact-form button {
-    background-color: #005000;
+    background-color: #633f21;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -288,9 +288,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #9caf88; /* Set background color to #005000 (dark green) */
+    background-color: #633f21;
     padding: 20px;
-    color: #fff; /* Set text color to white */
+    color: #fff; 
     border-radius: 5px;
 }
 
