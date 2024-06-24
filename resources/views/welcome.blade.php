@@ -455,8 +455,6 @@ footer {
         </p>
     </section>
 
-    <!-- Donate Section -->
-
     <!-- Number section -->
     <div class="numbers-section" id="numbers">
         <div class="number-card">
