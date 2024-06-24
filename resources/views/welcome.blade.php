@@ -56,6 +56,7 @@ body {
     background-color: rgba(245, 245, 220, 0.5); /* Set the background color with 50% transparency 
     z-index: 2; /* Set z-index to 2 to place it above the background image but behind the content 
 } */
+
 .welcome-section .text {
     flex: 1;
     margin-right: 20px;
@@ -146,8 +147,10 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 40px 0;
-    background-color: #f2f2f2;
+    background-color: rgba(245, 245, 220, 0.5);
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .number-card {
@@ -159,13 +162,13 @@ body {
     margin-top: 10px;
     font-size: 60px;
     margin-bottom: 10px;
-    color: #9caf88;
+    color: #633f21;
     font-family: Chalkduster;
 }
 
 .number-card p {
     font-size: 18px;
-    color: #666;
+    color: #96663e;
     font-family: "Telugu MN";
 }
 
@@ -180,19 +183,19 @@ body {
     font-family: Chalkduster;
     font-size: 60px;
     margin-top: 0;
-    color: #9caf88;
+    color: #633f21;
 }
 
 .testimonials-section p {
     font-family: "Telugu MN";
     font-size: 18px;
-    color: #9caf88;
+    color: #96663e;
 }
 
 .testimonials-container {
     display: flex;
     overflow: hidden;
-    animation: slideCards 60s linear infinite; /* Add CSS animation to slide the cards */
+   /* animation: slideCards 60s linear infinite;  Add CSS animation to slide the cards */
 }
 
 .testimonial-card {
@@ -399,7 +402,7 @@ footer {
         <x-slot:actions>
             <x-mary-button label="Home" link="#Home" class="btn-ghost btn-sm" responsive />
             <x-mary-button label="About Us" link="#About-Us" class="btn-ghost btn-sm" responsive />
-            <x-mary-button label="Donate" link="#Donate" class="btn-ghost btn-sm" responsive />
+            <x-mary-button label="Donate" link="#Services" class="btn-ghost btn-sm" responsive />
             <x-mary-button label="Reviews" link="#Reviews" class="btn-ghost btn-sm" responsive />
             <x-mary-button label="Contact Us" link="#Contact-Us" class="btn-ghost btn-sm" responsive />
 
@@ -429,7 +432,7 @@ footer {
         <div class="welcome-section">
             <div class="text">
                 <h2>We Are <br> Dynamic Donations</h2>
-                <p>A Donations Management Tool <br> designed to help with Lorem ipsum dolor sit.
+                <p>A Donations Management Tool <br> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 <br> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <a href="{{ route('register') }}" class="get-started-btn">Get Started</a>
             </div>
@@ -462,12 +465,12 @@ footer {
     <!-- Number section -->
     <div class="numbers-section" id="numbers">
         <div class="number-card">
-            <h3><span id="patientsCount">0</span>+</h3>
-            <p>Patients Benefiting From Tabib Health</p>
+            <h3><span> 0 </span>+</h3>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
         </div>
         <div class="number-card">
-            <h3><span id="countriesCount">0</span>+</h3>
-            <p>Countries Served</p>
+            <h3><span> 0 </span>+</h3>
+            <p>Lorem ipsum dolor sit amet consectetur</p>
         </div>
     </div>
 
@@ -477,7 +480,7 @@ footer {
         <div class="testimonials-container"> <!-- Wrapper for the testimonial cards -->
             <div class="testimonial-card">
                 <!-- Testimonial content for the first card -->
-                    <img src="images/profile1.jpeg" alt="Profile 1" class="profile-picture">
+                    <img src="{{ asset('img/plain-prof-pic.png') }}" alt="Profile 1" class="profile-picture">
                     <div class="testimonial-text">
                         <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem non, 
                             omnis repudiandae hic nobis aliquid. Ut, obcaecati deleniti.
@@ -488,7 +491,7 @@ footer {
 
             <div class="testimonial-card">
                 <!-- Testimonial content for the second card -->
-                <img src="images/profile2.png" alt="Profile 2" class="profile-picture">
+                <img src="{{ asset('img/prof-pic-specs.png') }}" alt="Profile 2" class="profile-picture">
                 <div class="testimonial-text">
                     <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ea 
                         rerum doloremque ipsam tenetur excepturi quas iusto error fugit magni architecto labore molestias, 
@@ -499,7 +502,7 @@ footer {
 
             <div class="testimonial-card">
                 <!-- Testimonial content for the third card -->
-                <img src="images/profile3.jpeg" alt="Profile 3" class="profile-picture">
+                <img src="{{ asset('img/anime-prof-pic.png') }}" alt="Profile 3" class="profile-picture">
                 <div class="testimonial-text">
                     <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ea 
                         rerum doloremque ipsam tenetur excepturi quas iusto error fugit magni architecto labore molestias, 
