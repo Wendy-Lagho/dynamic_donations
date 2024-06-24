@@ -371,11 +371,6 @@ footer {
         width: 90%;
     }
 }
-/* footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-} */
 
     </style>
 
