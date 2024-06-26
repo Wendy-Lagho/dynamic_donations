@@ -374,10 +374,9 @@ footer {
 
     </style>
 
-
-<body>
-
     </head>
+
+    <body>
 
     <!-- ABOVE THE FOLD -->
 
@@ -403,7 +402,7 @@ footer {
 
             @if (Route::has('login'))
             @auth
-                <a href="{{ url('/dashboard') }}" class="btn-neutral btn-sm"> Dashboard </a>
+                <a href="{{ url('/dashboard') }}" class="btn btn-sm"> Dashboard </a>
 
              @else
                 <a href="{{ route('login') }}" class="btn btn-sm"> Log in </a>
