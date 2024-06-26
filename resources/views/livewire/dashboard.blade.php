@@ -54,38 +54,97 @@
 
             {{-- The `$slot` goes here --}}
             <x-slot:content>
-                
-            <x-mary-form wire:submit.prevent="save">
-                <x-mary-header title="Donate" with-anchor separator />
-                <x-mary-input label="Item" placeholder="Enter item" wire:model="name" />
-                <x-mary-input label="Quantity" placeholder="Enter quantity" wire:model="quantity" />
-                <x-mary-input label="Description" placeholder="description" wire:model="location" />
-                <x-mary-input label="Date" placeholder="Enter location" wire:model="location" />
+                <div class="main-content" id="welcome">
+                    <div class="image">
+                        <img src="{{ asset('img/') }}" alt="" >
+                    </div>
 
-                
-                <x-slot:actions>
-                    <x-mary-button type="submit" label="Save" Route::get('/logout', function () {
-                        $guards = array_keys(config('auth.guards'));
-                    
-                        foreach ($guards as $guard) {
-                            {{-- if (auth()->guard($guard)->check()) {
-                                auth()->guard($guard)->logout(); --}}
-                            }
-                        }
-                    
-                        return redirect('/');
-                    {{-- })->foreach ($guards as $guard) {
-                        if (auth()->guard($guard)->check()) {
-                            auth()->guard($guard)->logout(); --}}
-                        }
-                    }
-                
-                    return redirect('/');
-                {{-- })->name('logout'); --}}
-                
-                require __DIR__.'/auth.php'; />
-                </x-slot:actions>
-            </x-mary-form>
+
+                    <div class="help-children">
+                        <h2>Help Children in Thomas Barnardo</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Iusto sunt, numquam qui molestiae soluta explicabo error corrupti adipisci 
+                            corporis eius dolore accusantium possimus consequatur exercitationem a doloribus, 
+                            illo mollitia quae ipsa modi rem! Necessitatibus tenetur beatae doloribus officia accusamus iste!</p>
+                    </div>
+
+
+                    <div class="our-work">
+                        <h2> Our Work For The Children</h2>
+                        <div class="our-work-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Rem unde maiores facere illum est nisi odio molestias obcaecati at autem.</p>
+                        </div>
+                        <div class="our-work-stats">
+                            <div class="stat-item">
+                                <img src="{{ asset('img/') }}" alt="">
+                                <p>Protected 124,492 children from harm</p>
+                            </div>
+                            <div class="stat-item">
+                                <img src="{{ asset('img/') }}" alt="">
+                                <p>Protected 124,492 children from harm</p>
+                            </div>
+                            <div class="stat-item">
+                                <img src="{{ asset('img/') }}" alt="">
+                                <p>Protected 124,492 children from harm</p>
+                            </div>
+                            <div class="stat-item">
+                                <img src="{{ asset('img/') }}" alt="">
+                                <p>Protected 124,492 children from harm</p>
+                            </div>
+                            <div class="stat-item">
+                                <img src="{{ asset('img/') }}" alt="">
+                                <p>Protected 124,492 children from harm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-to-help">
+                        <h2>How to Help the Children</h2>
+                        <img src="{{ asset('img/') }}" alt="">
+                        <div class="help-text1">
+                            <p class="donate-link"><a href="">Donate</a></p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
+                                rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
+                        </div>
+                            <img src="{{ asset('img/') }}" alt="">
+                            <div class="help-text2">
+                                <p class="needs-link"><a href="">Browse Needs</a></p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
+                                    rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
+                            </div>
+                            <img src="{{ asset('img/') }}" alt="">
+                            <div class="help-text3">
+                                <p class="join-link"><a href="">Join Team</a></p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
+                                    rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
+                            </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="footer">
+                        <div class="footer-logo">
+                            <img src="{{ asset('img/') }}" alt="Logo">
+                        </div>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="index.php">Home</a></li>
+                                <li><a href="#About-Us">About Us</a></li>
+                                <li><a href="#Donate">Donate</a></li>
+                                <li><a href="#Contact-Us">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-location">
+                            <p>Address: 123 Strathmore University, Nairobi, Kenya</p>
+                            <p>Email: <a href="mailto:info@tabibhealth.com">info@dynamicdonations.com</a></p>
+                            <p>Phone: <a href="tel:+254712345678">+254 (0) 712 345 678</a></p>
+                            <p>Copyright Wendy Lagho, Caleb Chemwa</p>
+                            <p>All Rights Reserved.</p>
+                        </div>
+                    </footer>
+
+
+                </div>
             </x-slot:content>
         </x-mary-main>
     </div>
