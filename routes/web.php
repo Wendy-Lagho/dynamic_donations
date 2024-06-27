@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\HomeController;
-
 use App\Livewire\Dashboard;
-
-
+use App\Livewire\DashProfile;
+use App\Livewire\History;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 
 Route::get('/', function () {
@@ -15,17 +12,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', Dashboard::class)->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dash_profile', function () {
-    return view('/dash_profile');
-});
-
 Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/dash-profile', DashProfile::class)->name('dash-profile');
+Route::get('/history', History::class)->name('history');
 
 
 Route::get('/logout', function () {
