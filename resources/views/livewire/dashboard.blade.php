@@ -15,6 +15,229 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .help-children {
+            background-color: rgba(245, 245, 220, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center; 
+            flex-wrap: wrap; 
+        }
+        .help-children h2 {
+            font-size: 50px;
+            color: #633f21;
+            margin-bottom: 10px;
+            width: 100%; 
+            text-align: center;
+            font-family: Chalkduster;
+            margin-top: 0;
+        }
+        .help-children p {
+            font-size: 20px;
+            color: #96663e;
+            margin-bottom: 20px;
+            width: 100%; 
+            text-align: justify;
+            font-family: Chalkduster;
+            margin-top: 0;
+            margin-right: 40px;
+            margin-left: 40px;
+        }
+
+        .our-work {
+            background-color: rgba(245, 245, 220, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex; /* Add this */
+            flex-wrap: wrap; /* Add this to allow wrapping */
+            justify-content: space-between; /* Add this to spread items */
+        }
+        .our-work h2 {
+            font-size: 50px;
+            color: #633f21;
+            margin-bottom: 10px;
+            width: 100%; 
+            text-align: center;
+            font-family: Chalkduster;
+            margin-top: 0;
+        }
+        .our-work-text, .our-work-stats {
+            width: 48%; /* Adjust width to fit within container */
+        }
+        .our-work-text p {
+            font-size: 20px;
+            color: #96663e;
+            margin-bottom: 20px;
+            width: 100%; 
+            text-align: justify;
+            font-family: Chalkduster;
+            margin-top: 0;
+        }
+        .our-work-stats {
+            width: 48%; /* Adjust width to fit within container */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: space-between; /* Space items evenly */
+           /* justify-content: flex-start;  Align items to the start */
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin: 16px; /* Adjust margin for spacing */
+            color: #96663e;
+            font-size: 20px;
+            font-family: Chalkduster;
+        }
+
+        .stat-item img {
+            margin-right: 0.5rem; /* Space between image and text */
+            width: 50px;
+            height: 50px;
+        }
+
+        .how-to-help {
+            background-color: rgba(245, 245, 220, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .how-to-help h2 {
+            font-size: 50px;
+            color: #633f21;
+            margin-bottom: 10px;
+            width: 100%; 
+            text-align: center;
+            font-family: Chalkduster;
+            margin-top: 0;
+        }
+
+        .how-to-help > div {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .how-to-help img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .help-text1, .help-text2, .help-text3 {
+            width: 30%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            text-align: justify;
+            color: #96663e;
+            font-family: Chalkduster;
+        }
+
+        .help-text1 img, .help-text2 img, .help-text3 img {
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 10px; 
+        }
+
+        .help-text1 p, .help-text2 p, .help-text3 p {
+            margin: 0;
+        }
+
+        .help-text1 p a, .help-text2 p a, .help-text3 p a {
+            color: #633f21;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .help-text1 p a:hover, .help-text2 p a:hover, .help-text3 p a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            width: 100%;
+            margin-top: 20px;
+            margin-left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #633f21;
+            padding: 20px;
+            color: #fff; 
+            border-radius: 5px;
+        }
+
+        .footer-logo img {
+            max-height: 200px;
+            width: auto;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .footer-links li {
+            margin-top: 10px;
+            margin-right: 20px;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #fff;
+            font-family: "American Typewriter";
+        }
+
+        .footer-location p {
+            font-size: 15px;
+            margin-bottom: 5px;
+            margin-right: 50px;
+            text-align: right;
+            font-family: "Telugu MN";
+        }
+
+        .footer-location a {
+            color: white;
+            text-decoration: none;
+        }
     </style>    
 </head>
 
@@ -38,10 +261,10 @@
                         <x-mary-menu-separator />
                     @endif
      
-                    <x-mary-menu-item title="Profile" icon="o-eye" link="/profile" />
-                    <x-mary-menu-item title="Needs" icon="o-list-bullet" link="#" />
-                    <x-mary-menu-item title="History" icon="o-clock" link="#" />
-                    <x-mary-menu-item title="Donate" icon="o-gift" link="#" />
+                    <x-mary-menu-item title="Profile" icon="o-eye" link="/dash-profile" />
+                    <x-mary-menu-item title="History" icon="o-clock" link="/history" />
+                    <x-mary-menu-item title="Notifications" icon="o-cog-6-tooth" link="/notifications" />
+                    <x-mary-menu-item title="Donate" icon="o-gift" link="/donate" />
                     <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="Log out" icon="o-power" link="/logout" />
                     <x-mary-menu-item title="Change Theme" icon="o-moon">
@@ -56,7 +279,7 @@
             <x-slot:content>
                 <div class="main-content" id="welcome">
                     <div class="image">
-                        <img src="{{ asset('img/') }}" alt="" >
+                        <img src="{{ asset('img/children-eating.jpg') }}" alt="" >
                     </div>
 
 
@@ -74,26 +297,33 @@
                         <div class="our-work-text">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                 Rem unde maiores facere illum est nisi odio molestias obcaecati at autem.</p>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                Quos blanditiis tempore molestias suscipit a, soluta illum iure mollitia.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Laudantium sequi ullam quasi reiciendis, deserunt dignmos iure Aut natus.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Eius minus fuga provident optio nesciunt debitis quam ipse iur voluptates!</p>
                         </div>
+
                         <div class="our-work-stats">
                             <div class="stat-item">
-                                <img src="{{ asset('img/') }}" alt="">
+                                <img src="{{ asset('img/hands-up.png') }}" alt="">
                                 <p>Protected 124,492 children from harm</p>
                             </div>
                             <div class="stat-item">
-                                <img src="{{ asset('img/') }}" alt="">
+                                <img src="{{ asset('img/ribbon.png') }}" alt="">
                                 <p>Protected 124,492 children from harm</p>
                             </div>
                             <div class="stat-item">
-                                <img src="{{ asset('img/') }}" alt="">
+                                <img src="{{ asset('img/heart.png') }}" alt="">
                                 <p>Protected 124,492 children from harm</p>
                             </div>
                             <div class="stat-item">
-                                <img src="{{ asset('img/') }}" alt="">
+                                <img src="{{ asset('img/cross.png') }}" alt="">
                                 <p>Protected 124,492 children from harm</p>
                             </div>
                             <div class="stat-item">
-                                <img src="{{ asset('img/') }}" alt="">
+                                <img src="{{ asset('img/plate-n-knife.png') }}" alt="">
                                 <p>Protected 124,492 children from harm</p>
                             </div>
                         </div>
@@ -101,24 +331,47 @@
 
                     <div class="how-to-help">
                         <h2>How to Help the Children</h2>
-                        <img src="{{ asset('img/') }}" alt="">
-                        <div class="help-text1">
-                            <p class="donate-link"><a href="">Donate</a></p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
-                                rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
-                        </div>
-                            <img src="{{ asset('img/') }}" alt="">
+
+                        <div>
+                            <div class="help-text1">
+                            <img src="{{ asset('img/baby-in-classroom.jpg') }}" alt="">
+                                <p class="donate-link"><a href="">Donate</a></p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
+                                    rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
+                            </div>
+
                             <div class="help-text2">
-                                <p class="needs-link"><a href="">Browse Needs</a></p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
-                                    rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
+                                <img src="{{ asset('img/ben-koor-cute-baby.jpg') }}" alt="">
+                                    <p class="needs-link"><a href="">Browse Needs</a></p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
+                                        rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
                             </div>
-                            <img src="{{ asset('img/') }}" alt="">
+
                             <div class="help-text3">
-                                <p class="join-link"><a href="">Join Team</a></p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
-                                    rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
+                                <img src="{{ asset('img/children-running.jpg') }}" alt="">
+                                    <p class="join-link"><a href="">Join Team</a></p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
+                                        rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
                             </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <x-mary-form wire:submit.prevent="save">
+                                <x-mary-header title="Donate" with-anchor separator />
+                                <x-mary-input label="Item" placeholder="Enter item" wire:model="name" />
+                                <x-mary-input label="Quantity" placeholder="Enter quantity" wire:model="quantity" />
+                                <x-mary-input label="Description" placeholder="description" wire:model="location" />
+                                <x-mary-input label="Date" placeholder="Enter location" wire:model="location" />
+                        
+                                <x-slot:actions>
+                                    <x-mary-button type="submit" label="Save" />
+                                </x-slot:actions>
+                            </x-mary-form>
+                        </div>                        
+
                     </div>
 
                     <!-- Footer -->
@@ -128,10 +381,10 @@
                         </div>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="index.php">Home</a></li>
-                                <li><a href="#About-Us">About Us</a></li>
+                                <li><a href="/dashboard">Dashboard</a></li>
+                                <li><a href="/needs">Need Catalogue</a></li>
                                 <li><a href="#Donate">Donate</a></li>
-                                <li><a href="#Contact-Us">Contact</a></li>
+                                <li><a href="/blog">Blog</a></li>
                             </ul>
                         </div>
                         <div class="footer-location">
@@ -142,8 +395,6 @@
                             <p>All Rights Reserved.</p>
                         </div>
                     </footer>
-
-
                 </div>
             </x-slot:content>
         </x-mary-main>
