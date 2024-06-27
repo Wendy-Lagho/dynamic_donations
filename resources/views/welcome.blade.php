@@ -346,15 +346,6 @@ body {
     }
 }
 
-footer {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: auto; /* Pushes the footer to the bottom of the page */
-}
-
 /* Utility Classes */
 .text-center {
     text-align: center;
@@ -553,7 +544,7 @@ footer {
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="#index.php">Home</a></li>
                     <li><a href="#About-Us">About Us</a></li>
                     <li><a href="#Donate">Donate</a></li>
                     <li><a href="#Contact-Us">Contact</a></li>
