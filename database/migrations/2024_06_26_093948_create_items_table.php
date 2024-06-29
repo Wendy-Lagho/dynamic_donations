@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-                // Drop the table if it exists
-                Schema::dropIfExists('items');
+        // Drop the table if it exists
+        Schema::dropIfExists('items');
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
