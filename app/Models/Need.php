@@ -10,10 +10,14 @@ class Need extends Model
     use HasFactory;
 
     protected $fillable = [
-        'item_id',
-        'quantity_needed',
-        'priority_level',
-        'date_added',
-        'status',
+        'need_name',
+        'quantity_required',
+        'fulfilled',
     ];
+
+    protected $casts = [
+        'fulfilled' => 'boolean',
+    ];
+
+    protected $table = 'needs'; // Specify the table name explicitly if different from the model name
 }

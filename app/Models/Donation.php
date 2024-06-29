@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace App\Models;
 
@@ -13,9 +13,10 @@ class Donation extends Model
         'user_id',
         'need_id',
         'comments',
-        'date',
+        'donation_date',
         'status',
-        'receipt_generated',
+        'receipt_sent',
+        'admin_approved',
     ];
 
     // Define the relationship to the User model
