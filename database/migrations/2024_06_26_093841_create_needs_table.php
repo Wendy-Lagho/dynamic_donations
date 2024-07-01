@@ -20,6 +20,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('need_name', 100); // Specify maximum length for consistency
             $table->unsignedInteger('quantity_required'); // Ensure only positive values
+            $table->string('unit')->default(''); // Set default value as an empty string for clarity// Default to 0
+            $table->string('need_type', 100);
             $table->boolean('fulfilled')->default(false); // Boolean field to indicate if the need is fulfilled
             $table->timestamps();
         });
