@@ -18,8 +18,10 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('need_id');
+            $table->unsignedInteger('need_id');
             $table->date('donation_date');
+            $table->unsignedInteger('quantity'); 
+            $table->string('unit', 50); 
             $table->string('status', 20)->default('pending');
             $table->boolean('receipt_sent')->default(false);
             $table->text('comments')->nullable();
@@ -28,7 +30,7 @@ return new class extends Migration
     
             // Foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('need_id')->references('id')->on('needs_list')->onDelete('cascade');
+            $table->foreign('need_id')->references('id')->on('needs')->onDelete('cascade');
         });
     }
 
