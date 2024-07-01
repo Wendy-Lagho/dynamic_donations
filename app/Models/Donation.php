@@ -9,13 +9,16 @@ class Donation extends Model
 {
     use HasFactory;
 
+    // Fillable fields to prevent mass assignment vulnerabilities
     protected $fillable = [
         'user_id',
         'need_id',
-        'comments',
         'donation_date',
+        'quantity',
+        'unit',
         'status',
         'receipt_sent',
+        'comments',
         'admin_approved',
     ];
 

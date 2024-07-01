@@ -12,6 +12,7 @@ class Need extends Model
     protected $fillable = [
         'need_name',
         'quantity_required',
+        'need_type',
         'fulfilled',
     ];
 
