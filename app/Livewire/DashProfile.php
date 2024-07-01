@@ -3,48 +3,69 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\User;
+use Mary\Traits\Toast;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class DashProfile extends Component
 {
-//     public $user;
-//     public $name; 
+    use Toast;
 
-//     public function mount()
-//     {
-//         if (!Auth::check()) {
-//             return redirect()->route('login');
-//         }
+    public $userId, $name, $email, $phone, $address;
 
-//         $this->user = Auth::user();
-//         if ($this->user) {
-//             $this->name = $this->user->name;
-//         }
-//     }
+    /**
+     * The mount function automatically runs when the component is initialized.
+     * It's used here to set the user's initial data.
+     */
+    public function mount()
+    {
+        $this->userId = Auth::id(); // Using the Auth facade for clarity
+        $user = User::find($this->userId);
 
-//     public function updateProfile()
-// {
-//     if (!$this->user) {
-//         session()->flash('error', 'You must be logged in to update your profile.');
-//         return;
-//     }
+        if ($user) {
+            $this->name = $user->name;
+            $this->email = $user->email;
+            $this->phone = $user->phone;
+            $this->address = $user->address;
+        } else {
+            $this->error('User not found.');
+        }
+    }
 
-//     $this->validate([
-//         'name' => ['required', 'string', 'max:255'],
-//     ]);
+    /**
+     * Updates the user's profile information.
+     */
+    public function update()
+    {
+        $this->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $this->userId,
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+        ]);
 
-//     try {
-//         $this->user->name = $this->name;
-//         $this->user->save();
+        $user = User::find($this->userId);
 
-//         session()->flash('message', 'Profile updated successfully.');
-//     } catch (\Exception $e) {
-//         session()->flash('error', 'There was a problem updating your profile.');
-//     }
-// }
+        if (!$user) {
+            $this->error('User not found.');
+            return;
+        }
 
-public function render()
-{
-    return view('livewire.dash-profile');
-}
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->phone = $this->phone;
+        $user->address = $this->address;
+        $user->save();
+
+        $this->success('User updated successfully');
+    }
+
+    /**
+     * Renders the Livewire component view.
+     */
+    public function render()
+    {
+        return view('livewire.dash-profile');
+    }
 }
