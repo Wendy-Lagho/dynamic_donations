@@ -15,6 +15,7 @@
                             
                         </x-mary-list-item>
      
+
                         <x-mary-menu-separator />
                     @endif
      
@@ -33,6 +34,7 @@
             {{-- The `$slot` goes here --}}
 
             <x-slot:content>
+                
             Admin Content
             </x-slot:content>
         </x-mary-main>
