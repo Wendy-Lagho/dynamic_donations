@@ -34,8 +34,9 @@
             {{-- The `$slot` goes here --}}
 
             <x-slot:content>
-                
+
             Admin Content
+            
             </x-slot:content>
         </x-mary-main>
     </div>
