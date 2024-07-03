@@ -31,6 +31,7 @@
             </x-slot:sidebar>
      
             {{-- The `$slot` goes here --}}
+
             <x-slot:content>
             Admin Content
             </x-slot:content>
