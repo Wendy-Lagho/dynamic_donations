@@ -55,7 +55,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 stretch-card grid-margin">
-                      <div class="card bg-gradient-danger card-img-holder text-white">
+                      <div class="card bg-brown-500 card-img-holder text-white">
                         <div class="card-body">
                           <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                           <h4 class="font-weight-normal mb-3">Weekly Donations <i class="mdi mdi-currency-usd mdi-24px float-right"></i>
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
-                      <div class="card bg-gradient-info card-img-holder text-white">
+                      <div class="card bg-beige-500 card-img-holder text-black">
                         <div class="card-body">
                           <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                           <h4 class="font-weight-normal mb-3">New Donors <i class="mdi mdi-account-outline mdi-24px float-right"></i>
@@ -77,7 +77,7 @@
                       </div>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
-                      <div class="card bg-gradient-success card-img-holder text-white">
+                      <div class="card bg-brown-700 card-img-holder text-white">
                         <div class="card-body">
                           <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                           <h4 class="font-weight-normal mb-3">Active Campaigns <i class="mdi mdi-bullhorn mdi-24px float-right"></i>
