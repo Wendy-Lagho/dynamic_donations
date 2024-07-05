@@ -12,20 +12,22 @@ class Notifications extends Component
 
     public function mount()
     {
-        $this->notifications = Notification::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $this->notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
     }
 
     public function markAsRead($notificationId)
     {
         $notification = Notification::find($notificationId);
-        if ($notification && $notification->user_id == Auth::id()) {
-            $notification->update(['read_at' => now()]);
-            $this->notifications = Notification::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        if ($notification && $notification->notifiable_id == Auth::id()) {
+            $notification->markAsRead();
+            $this->notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
         }
     }
 
     public function render()
     {
-        return view('livewire.notifications');
+        return view('livewire.notifications', [
+            'notifications' => $this->notifications,
+        ]);
     }
 }
