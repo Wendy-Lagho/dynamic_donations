@@ -38,37 +38,39 @@
                         {{ session('message') }}
                     </div>
                 @endif
-        
+            
                 @if (session()->has('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
                     </div>
                 @endif
-        
+            
                 <form wire:submit.prevent="update" class="space-y-4">
                     <div class="form-group">
                         <label for="name" class="block text-sm font-medium text-primary">Name</label>
-                        <input type="text" id="name" wire:model.defer="name" placeholder="Name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 bg-white" required>
+                        <input type="text" id="name" wire:model.defer="name" placeholder="Name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required>
                         @error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="email" class="block text-sm font-medium text-primary">Email</label>
-                        <input type="email" id="email" wire:model.defer="email" placeholder="Email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 bg-white" required>
+                        <input type="email" id="email" wire:model.defer="email" placeholder="Email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required>
                         @error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="phone" class="block text-sm font-medium text-primary">Phone</label>
-                        <input type="text" id="phone" wire:model.defer="phone" placeholder="Phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 bg-white" required>
+                        <input type="text" id="phone" wire:model.defer="phone" placeholder="Phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required>
                         @error('phone') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="address" class="block text-sm font-medium text-primary">Address</label>
-                        <input type="text" id="address" wire:model.defer="address" placeholder="Address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 bg-white" required>
+                        <input type="text" id="address" wire:model.defer="address" placeholder="Address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required>
                         @error('address') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Update Profile</button>
                 </form>
             </div>
+            
+            
         </x-slot:content>
         
         

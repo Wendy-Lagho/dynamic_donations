@@ -20,15 +20,15 @@
                     </label>
          
                     {{-- Brand --}}
-                    <div>Dynamic Donations</div>
+                    <div class="text-primary">Dynamic Donations</div>
                 </x-slot:brand>
          
                 {{-- Right side actions --}}
                 <x-slot:actions>
-                    <x-mary-button label="Home" link="###" class="btn-ghost btn-sm" responsive />
-                    <x-mary-button label="About Us" link="###" class="btn-ghost btn-sm" responsive />
-                    <x-mary-button label="Donations" link="###" class="btn-ghost btn-sm" responsive />
-                    <x-mary-button label="Notifications" link="###" class="btn-ghost btn-sm" responsive />
+                    <x-mary-button label="Home" link="" class="btn-ghost btn-sm text-primary" responsive />
+                    <x-mary-button label="About Us" link="#About-Us" class="btn-ghost btn-sm text-primary" responsive />
+                    <x-mary-button label="Reviews" link="#Reviews" class="btn-ghost btn-sm text-primary" responsive />
+                    <x-mary-button label="Contact Us" link="#Contact-Us" class="btn-ghost btn-sm text-primary" responsive />
                 </x-slot:actions>
             </x-mary-nav>
          

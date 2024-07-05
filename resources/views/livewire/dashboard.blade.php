@@ -335,14 +335,14 @@
                         <div>
                             <div class="help-text1">
                             <img src="{{ asset('img/baby-in-classroom.jpg') }}" alt="">
-                                <p class="donate-link"><a href="">Donate</a></p>
+                                <p class="donate-link"><a href="{{ route('donate-form') }}">Donate</a></p>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
                                     rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
                             </div>
 
                             <div class="help-text2">
                                 <img src="{{ asset('img/ben-koor-cute-baby.jpg') }}" alt="">
-                                    <p class="needs-link"><a href="">Browse Needs</a></p>
+                                    <p class="needs-link"><a href="{{ route('needs') }}">Browse Needs</a></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
                                         rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
                             </div>
@@ -364,10 +364,10 @@
                         </div>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="/dashboard">Dashboard</a></li>
-                                <li><a href="/needs">Need Catalogue</a></li>
-                                <li><a href="#Donate">Donate</a></li>
-                                <li><a href="/blog">Blog</a></li>
+                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                <li><a href="{{ route('needs') }}">Need Catalogue</a></li>
+                                <li><a href="{{ route('donate-form') }}">Donate</a></li>
+                                <li><a href="{{ route('blog') }}">Blog</a></li>
                             </ul>
                         </div>
                         <div class="footer-location">

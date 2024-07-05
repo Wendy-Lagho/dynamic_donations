@@ -195,7 +195,7 @@ body {
 .testimonials-container {
     display: flex;
     overflow: hidden;
-   /* animation: slideCards 60s linear infinite;  Add CSS animation to slide the cards */
+    animation: slideCards 60s linear infinite;  /* Add CSS animation to slide the cards */
 }
 
 .testimonial-card {
@@ -259,6 +259,7 @@ body {
     margin-bottom: 10px;
     font-family: "Telugu MN";
     font-size: 18px;
+    color: #96663e
 }
 
 .contact-form input,
@@ -268,7 +269,7 @@ body {
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #96663e;
+    /* color: #96663e; */
 }
 
 .contact-form button {
@@ -385,22 +386,20 @@ body {
  
         {{-- Right side actions --}}
         <x-slot:actions>
-            <x-mary-button label="Home" link="#Home" class="btn-ghost btn-sm" responsive />
-            <x-mary-button label="About Us" link="#About-Us" class="btn-ghost btn-sm" responsive />
-            <x-mary-button label="Donate" link="#Services" class="btn-ghost btn-sm" responsive />
-            <x-mary-button label="Reviews" link="#Reviews" class="btn-ghost btn-sm" responsive />
-            <x-mary-button label="Contact Us" link="#Contact-Us" class="btn-ghost btn-sm" responsive />
+            <x-mary-button label="Home" link="" class="btn-ghost btn-sm text-primary" responsive />
+                    <x-mary-button label="About Us" link="#About-Us" class="btn-ghost btn-sm text-primary" responsive />
+                    <x-mary-button label="Reviews" link="#Reviews" class="btn-ghost btn-sm text-primary" responsive />
+                    <x-mary-button label="Contact Us" link="#Contact-Us" class="btn-ghost btn-sm text-primary" responsive />
 
             @if (Route::has('login'))
             @auth
-                <a href="{{ url('/dashboard') }}" class="btn btn-sm"> Dashboard </a>
+                <a href="{{ url('/dashboard') }}" class="btn btn-sm text-primary"> Dashboard </a>
 
              @else
-                <a href="{{ route('login') }}" class="btn btn-sm"> Log in </a>
+                <a href="{{ route('login') }}" class="btn btn-sm text-primary"> Log in </a>
 
             @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="btn btn-sm"> Register
-                </a>
+                <a href="{{ route('register') }}" class="btn btn-sm text-primary"> Register </a>
 
             @endif
 
@@ -448,25 +447,25 @@ body {
     <!-- Number section -->
     <div class="numbers-section" id="numbers">
         <div class="number-card">
-            <h3><span> 0 </span>+</h3>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <h3><span> 2 </span>+</h3>
+            <p>Institutions that have benefited.</p>
         </div>
         <div class="number-card">
             <h3><span> 0 </span>+</h3>
-            <p>Lorem ipsum dolor sit amet consectetur</p>
+            <p>Lorem ipsum dolor sit amet.</p>
         </div>
     </div>
 
     <!-- Testimonials-->
     <section class="testimonials-section" id="Reviews">
-        <h2>Testimonials</h2>
+        <h2>Reviews</h2>
         <div class="testimonials-container"> <!-- Wrapper for the testimonial cards -->
             <div class="testimonial-card">
                 <!-- Testimonial content for the first card -->
                     <img src="{{ asset('img/plain-prof-pic.png') }}" alt="Profile 1" class="profile-picture">
                     <div class="testimonial-text">
                         <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem non, 
-                            omnis repudiandae hic nobis aliquid. Ut, obcaecati deleniti.
+                            omnis repudiandae hic nobis aliquid. Ut, obcaecati deleniti. magni architecto labore molestias,
                             lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem non,"</p>
                         <p class="testimonial-author">- John Doe</p>
                     </div>
@@ -495,7 +494,7 @@ body {
             </div>
 
             <div class="testimonial-card">
-                <img src="images/profile4.jpeg" alt="Profile 4" class="profile-picture">
+                <img src="{{ asset('img/plain-prof-pic.png') }}" alt="Profile 4" class="profile-picture">
                 <div class="testimonial-text">
                     <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ea 
                         rerum doloremque ipsam tenetur excepturi quas iusto error fugit magni architecto labore molestias, 
@@ -505,7 +504,7 @@ body {
             </div>
 
             <div class="testimonial-card">
-                <img src="images/profile5.jpeg" alt="Profile 5" class="profile-picture">
+                <img src="{{ asset('img/plain-prof-pic.png') }}" alt="Profile 5" class="profile-picture">
                 <div class="testimonial-text">
                     <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ea 
                         rerum doloremque ipsam tenetur excepturi quas iusto error fugit magni architecto labore molestias, 
@@ -546,8 +545,8 @@ body {
                 <ul>
                     <li><a href="#index.php">Home</a></li>
                     <li><a href="#About-Us">About Us</a></li>
-                    <li><a href="#Donate">Donate</a></li>
-                    <li><a href="#Contact-Us">Contact</a></li>
+                    <li><a href="#Donate">Reviews</a></li>
+                    <li><a href="#Contact-Us">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-location">
