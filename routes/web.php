@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', Dashboard::class)->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/admin/dashboard', AdminDashboard::class)->middleware(['auth', 'verified'])->name('admin.dashboard');
+Route::get('/dashboard', Dashboard::class)->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dash-profile', DashProfile::class)->middleware(['auth', 'verified'])->name('dash-profile');
 Route::get('/history', History::class)->name('history');
 Route::get('/needs', Needs::class)->name('needs');
