@@ -24,6 +24,10 @@ Route::get('/blog', Blog::class)->name('blog');
 Route::get('/notifications', Notifications::class)->name('notifications');
 Route::get('/donate-form', DonateForm::class)->name('donate-form');
 
+Route::post('/paypal', [DonateForm::class, 'paypal'])->name('paypal');
+Route::get('/paypal-success', [DonateForm::class, 'success'])->name('paypal.success');
+Route::get('/paypal-cancel', [DonateForm::class, 'cancel'])->name('paypal.cancel');
+
 
 Route::get('/logout', function () {
     $guards = array_keys(config('auth.guards'));

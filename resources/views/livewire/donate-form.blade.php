@@ -24,55 +24,78 @@
         </x-slot:sidebar>
 
         {{-- CONTENT --}}
-<x-slot name="content">
-    <div class="container mx-auto p-8">
-        <h2 class="text-primary text-5xl mb-8 font-chalkduster">Donate</h2>
-        <form wire:submit.prevent="submit" class="space-y-6">
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label for="needs" class="label text-primary">Item</label>
-                    <select id="needs" wire:model="selectedNeed" class="select select-bordered w-full text-black">
-                        <option value="" class="text-gray">Select an item</option>
-                        @foreach($needs as $need)
-                            <option value="{{ $need->id }}">{{ $need->need_name }}</option>
-                        @endforeach
-                    </select>
-                    @error('selectedNeed') <span class="text-red-500">{{ $message }}</span> @enderror
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label for="quantity" class="label text-primary">Quantity</label>
-                    <input type="number" id="quantity" wire:model="quantity" class="input input-bordered w-full text-white" required>
-                    @error('quantity') <span class="text-red-500">{{ $message }}</span> @enderror
-                </div>
+        <x-slot:content>
+            <div class="container mx-auto p-8">
+                <h2 class="text-primary text-5xl mb-8 font-chalkduster">Donate</h2>
+                <form wire:submit.prevent="submit" class="space-y-6">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label for="needs" class="label text-primary">Item</label>
+                            <select id="needs" wire:model="selectedNeed" class="select select-bordered w-full text-black">
+                                <option value="" class="text-gray">Select an item</option>
+                                @foreach($needs as $need)
+                                    <option value="{{ $need->id }}">{{ $need->need_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('selectedNeed') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label for="quantity" class="label text-primary">Quantity</label>
+                            <input type="number" id="quantity" wire:model="quantity" class="input input-bordered w-full text-white" required>
+                            @error('quantity') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label for="unit" class="label text-primary">Unit</label>
+                            <input type="text" id="unit" wire:model="unit" class="input input-bordered w-full text-white" placeholder="e.g., pieces, kilograms">
+                            @error('unit') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label for="donation_date" class="label text-primary">Date</label>
+                            <input type="date" id="donation_date" wire:model="donationDate" class="input input-bordered w-full text-black" required>
+                            @error('donationDate') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="comments" class="label text-secondary">
+                            <span class="label-text">Comments</span>
+                        </label>
+                        <textarea id="comments" wire:model="comments" class="textarea textarea-bordered w-full text-secondary" placeholder="Your comments here..."></textarea>
+                        @error('comments') <span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                    
+                    {{-- <div class="form-control mt-4">
+                        <form action="{{ route('paypal') }}" method="POST">
+                            @csrf
+                            <button class="btn bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded" type="submit">
+                                Pay with PayPal
+                            </button>
+                        </form>
+                    </div>                     --}}
+                    
+                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        Submit
+                    </button>
+                </form>
+
+                <div class="form-control mt-4">
+                    <form action="{{ route('paypal') }}" method="POST">
+                        @csrf
+                        <button class="btn bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded" type="submit">
+                            Pay with PayPal
+                        </button>
+                    </form>
+                </div>  
+
+                
+                @if (session()->has('message'))
+                    <div class="alert alert-success mt-4">
+                        {{ session('message') }}
+                    </div>
+                @endif
             </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label for="unit" class="label text-primary">Unit</label>
-                    <input type="text" id="unit" wire:model="unit" class="input input-bordered w-full text-white" placeholder="e.g., pieces, kilograms">
-                    @error('unit') <span class="text-red-500">{{ $message }}</span> @enderror
-                </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <label for="donation_date" class="label text-primary">Date</label>
-                    <input type="date" id="donation_date" wire:model="donationDate" class="input input-bordered w-full text-black" required>
-                    @error('donationDate') <span class="text-red-500">{{ $message }}</span> @enderror
-                </div>
-            </div>
-            <div class="form-control">
-                <label for="comments" class="label text-secondary">
-                    <span class="label-text">Comments</span>
-                </label>
-                <textarea id="comments" wire:model="comments" class="textarea textarea-bordered w-full text-secondary" placeholder="Your comments here..."></textarea>
-                @error('comments') <span class="text-red-500">{{ $message }}</span> @enderror
-            </div>
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Submit</button>
-        </form>
-        @if (session()->has('message'))
-            <div class="alert alert-success mt-4">
-                {{ session('message') }}
-            </div>
-        @endif
-    </div>
-</x-slot>
+        </x-slot:content>
 
         
     </x-mary-main>
