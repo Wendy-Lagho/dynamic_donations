@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Need;
 use App\Models\Donation;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 // use Illuminate\Support\Facades\Validator;
@@ -61,11 +62,11 @@ class DonateForm extends Component
                 'receipt_sent' => false,
                 'admin_approved' => false,
             ]);
-
+    
             session()->flash('message', 'Donation submitted successfully!');
-    }
+        }
 
-    public function paypal(Request $request)
+    public function paypal()
     {
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -101,7 +102,7 @@ class DonateForm extends Component
 
     public function success(Request $request)
 {
-    //Handle succes logic
+    //Handle success logic
     $provider = new PayPalClient;
     $provider->setApiCredentials(config('paypal'));
     $provider->setCurrency('USD');
@@ -112,6 +113,21 @@ class DonateForm extends Component
     $response = $provider->capturePaymentOrder($orderId);
 
     if (isset($response['status']) && $response['status'] == 'COMPLETED') {
+
+        //insert data into database
+        $data = [
+            'user_id' => Auth::id(),
+            'payment_id' => $response['id'],
+            'payment_amount' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['value'],
+            'payment_currency' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['currency_code'],
+            'payer_id' => $response['payer']['payer_id'],
+            'payer_name' => $response['payer']['name']['given_name'],
+            'payer_surname' => $response['payer']['name']['surname'],
+            'payer_email' => $response['payer']['email_address'],
+            'payment_status' => $response['status'],
+            
+        ];
+        Payment::create($data);
         // Update your donation record as completed
         session()->flash('message', 'Transaction completed successfully!');
     } else {
