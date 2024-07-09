@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Schema::dropIfExists('payments');
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('need_id')->constrained();
             $table->string('payment_id');
+            $table->string('payment_amount');
+            $table->string('payment_currency');
             $table->string('payer_id');
-            $table->string('payment_status');
-            $table->string('payment_method');
-            $table->string('payer_email');
             $table->string('payer_name');
             $table->string('payer_surname');
-            $table->string('payer_address');
-
+            $table->string('payer_email');
+            $table->string('payment_status');
             $table->timestamps();
         });
     }

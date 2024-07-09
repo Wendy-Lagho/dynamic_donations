@@ -9,12 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        
-        // Schema::dropIfExists('items');
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('volunteer_activities', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->dateTime('date_time');
+            $table->string('location');
             $table->timestamps();
         });
     }
@@ -22,8 +24,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('volunteer_activities');
     }
 };
