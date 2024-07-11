@@ -4,65 +4,58 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\User;
+use Mary\Traits\Toast;
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
 
 class ViewUsers extends Component
 {
     use WithPagination;
+    use Toast;
 
-    public $name, $email, $password, $usertype = 'user', $phone, $address;
-    public $confirmingUserDeletion = false;
-    public $userIdBeingDeleted;
+    public $userId;
+    public $name;
+    public $email;
+    public $usertype;
+    public $phone;
+    public $address;
+    public bool $showEditModal = false;
 
-    protected $rules = [
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8',
-        'usertype' => 'required|string',
-        'phone' => 'nullable|string|max:20',
-        'address' => 'nullable|string|max:255',
-    ];
+    public function delete($id)
+    {
+        User::destroy($id);
+        $this->success('User deleted successfully');
+    }
+    public function edit($id)
+    {
+        $this->userId = $id;
+        $user = User::find($id);
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->usertype = $user->usertype;
+        $this->phone = $user->phone;
+        $this->address = $user->address;
+        $this->showEditModal = true;
+    }
+    public function update()
+    {
+        $user = User::find($this->userId);
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->phone = $this->phone;
+        $user->save();
+        $this->success('User updated successfully');
+        $this->showEditModal = false;
+    }
 
+    public function closeModal()
+    {
+        $this->showEditModal = false;
+    }
     public function render()
     {
         $users = User::paginate(10);
 
-        return view('livewire.admin.view-users', [
-            'users' => $users
-        ]);
-    }
-
-    public function addUser()
-    {
-        $this->validate();
-
-        User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
-            'usertype' => $this->usertype,
-            'phone' => $this->phone,
-            'address' => $this->address,
-        ]);
-
-        $this->reset(['name', 'email', 'password', 'usertype', 'phone', 'address']);
-
-        session()->flash('message', 'User added successfully.');
-    }
-
-    public function confirmUserDeletion($userId)
-    {
-        $this->confirmingUserDeletion = true;
-        $this->userIdBeingDeleted = $userId;
-    }
-
-    public function deleteUser()
-    {
-        User::findOrFail($this->userIdBeingDeleted)->delete();
-        $this->confirmingUserDeletion = false;
-        $this->userIdBeingDeleted = null;
-
-        session()->flash('message', 'User deleted successfully.');
+        return view('livewire.admin.view-users');
     }
 }

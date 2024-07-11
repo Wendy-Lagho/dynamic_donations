@@ -25,7 +25,7 @@
 
         {{-- CONTENT --}}
         <x-slot:content>
-            <div class="container mx-auto p-8">
+            {{-- <div class="container mx-auto p-8">
                 <h2 class="text-primary text-5xl mb-8 font-chalkduster">Donate</h2>
                 <form wire:submit.prevent="submit" class="space-y-6">
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -65,15 +65,6 @@
                         @error('comments') <span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     
-                    {{-- <div class="form-control mt-4">
-                        <form action="{{ route('paypal') }}" method="POST">
-                            @csrf
-                            <button class="btn bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded" type="submit">
-                                Pay with PayPal
-                            </button>
-                        </form>
-                    </div>                     --}}
-                    
                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                         Submit
                     </button>
@@ -94,7 +85,47 @@
                         {{ session('message') }}
                     </div>
                 @endif
-            </div>
+            </div> --}}
+
+            <!-- donate-form.blade.php -->
+
+<!-- resources/views/livewire/donate-form.blade.php -->
+        <div>
+            <h2>Donate to {{ $selectedNeed->need_name }}</h2>
+
+            <form wire:submit.prevent="submitDonation">
+                <!-- Donation form fields -->
+                <div>
+                    <label for="donation_date">Donation Date</label>
+                    <input type="date" id="donation_date" wire:model.defer="donation_date">
+                    @error('donation_date') <span class="error">{{ $message }}</span> @enderror
+                </div>
+
+                <div>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" wire:model.defer="quantity">
+                    @error('quantity') <span class="error">{{ $message }}</span> @enderror
+                </div>
+
+                <div>
+                    <label for="unit">Unit</label>
+                    <input type="text" id="unit" wire:model.defer="unit">
+                    @error('unit') <span class="error">{{ $message }}</span> @enderror
+                </div>
+
+                <div>
+                    <label for="comments">Comments</label>
+                    <textarea id="comments" wire:model.defer="comments"></textarea>
+                    @error('comments') <span class="error">{{ $message }}</span> @enderror
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-primary">Donate</button>
+                    <button type="button" wire:click="donateAnotherItem">Donate Another Item</button>
+                </div>
+            </form>
+        </div>
+
         </x-slot:content>
 
         

@@ -23,7 +23,36 @@
     </x-slot:sidebar>
 
     <x-slot name="content">
-    Close your eyes. Count to one. That is how long forever feels.
+        @php
+        $donations = \App\Models\Donation::all();
+
+        $headers = [
+           // ['key' => 'id', 'label' => '#'],
+            ['key' => 'user.name', 'label' => 'Name'],
+            ['key' => 'need.name', 'label' => 'Need'],
+            ['key' => 'donation_date', 'label' => 'Date'],
+            ['key' => 'quantity', 'label' => 'Quantity'],
+            ['key' => 'unit', 'label' => 'Unit'],
+            ['key' => 'status', 'label' => 'Status'],
+            ['key' => 'receipt_sent', 'label' => 'Receit Sent'],
+            ['key' => 'comments', 'label' => 'Comments'],
+            ['key' => 'admin_approved', 'label' => 'Approval'],
+            ['key' => 'actions', 'label' => 'Actions'],
+        ];
+        @endphp
+
+        <x-mary-header title="DONATIONS" with-anchor separator />
+        <x-mary-table :headers="$headers" :rows="$donations" striped >
+            @foreach($donations as $donation)
+                @scope('actions', $donation)
+                <div class="flex">
+                    <x-mary-button icon="o-trash" wire:click="delete({{ $donation->id }})" class="btn-sm" />
+                    <x-mary-button icon="o-pencil" wire:click="edit({{ $donation->id }})" class="btn-sm" />
+                </div>
+                @endscope
+            @endforeach
+        </x-mary-table>
+            
     </x-slot>
 </x-mary-main>
 </div>

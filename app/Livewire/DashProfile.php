@@ -36,16 +36,10 @@ class DashProfile extends Component
     /**
      * Updates the user's profile information.
      */
-    public function update()
+    public function updateProfile()
     {
-        $this->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $this->userId,
-            'phone' => 'required|string|max:20',
-            'address' => 'required|string|max:255',
-        ]);
-
-        $user = User::find($this->userId);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
 
         if (!$user) {
             $this->error('User not found.');

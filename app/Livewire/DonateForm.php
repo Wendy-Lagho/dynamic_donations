@@ -13,59 +13,51 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class DonateForm extends Component
 {
-    public $needs;
     public $selectedNeed;
+    public $donation_date;
     public $quantity;
     public $unit;
-    public $donationDate;
     public $comments;
 
-    protected $rules = [
-        'selectedNeed' => 'required|exists:needs,id',
-        'quantity' => 'required|integer|min:1',
-        'unit' => 'required|string|max:50',
-        'donationDate' => 'required|date',
-        'comments' => 'nullable|string',
-    ];
-
-    protected $messages = [
-        'selectedNeed.required' => 'A need must be selected.',
-        'selectedNeed.exists' => 'The selected need does not exist.',
-        'quantity.required' => 'The quantity is required.',
-        'quantity.integer' => 'The quantity must be an integer.',
-        'quantity.min' => 'The quantity must be at least 1.',
-        'unit.required' => 'The unit is required.',
-        'unit.string' => 'The unit must be a string.',
-        'unit.max' => 'The unit must not exceed 50 characters.',
-        'donationDate.required' => 'The donation date is required.',
-        'donationDate.date' => 'The donation date is not a valid date.',
-        'comments.string' => 'The comments must be a string.',
-    ];
-
-    public function mount()
+    public function mount(Need $need)
     {
-        $this->needs = Need::all();
+        $this->selectedNeed = $need;
     }
 
-    public function submit()
+    public function submitDonation()
     {
-            $this->validate();
+        // Validate donation form fields
+        $validatedData = $this->validate([
+            'donation_date' => 'required|date',
+            'quantity' => 'required|integer|min:1',
+            'unit' => 'required|string|max:50',
+            'comments' => 'nullable|string',
+        ]);
 
-            Donation::create([
-                'user_id' => Auth::id(),
-                'need_id' => $this->selectedNeed,
-                'quantity' => $this->quantity,
-                'unit' => $this->unit,
-                'donation_date' => $this->donationDate,
-                'comments' => $this->comments,
-                'status' => 'pending',
-                'receipt_sent' => false,
-                'admin_approved' => false,
-            ]);
-    
-            session()->flash('message', 'Donation submitted successfully!');
-        }
+        // Save donation to database
+        Donation::create([
+            'need_id' => $this->selectedNeed->id,
+            'donation_date' => $validatedData['donation_date'],
+            'quantity' => $validatedData['quantity'],
+            'unit' => $validatedData['unit'],
+            'comments' => $validatedData['comments'],
+        ]);
 
+        session()->flash('message', 'Donation submitted successfully!');
+
+        // Clear form fields for next donation
+        $this->reset(['donation_date', 'quantity', 'unit', 'comments']);
+    }
+
+    public function donateAnotherItem()
+    {
+        // Redirect back to the needs page
+        return redirect()->route('needs');
+    }
+
+
+
+    //PAYPAL PAYMENT GATEWAY INTERGRATION
     public function paypal()
     {
         $provider = new PayPalClient;

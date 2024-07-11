@@ -22,7 +22,45 @@
             </x-mary-menu>
         </x-slot>
         <x-slot name="content">
-            <div class="overflow-x-auto">
+            @php
+            $users = \App\Models\User::all();
+
+            $headers = [
+                ['key' => 'id', 'label' => '#'],
+                ['key' => 'name', 'label' => 'Name'],
+                ['key' => 'email', 'label' => 'E-mail Address'],
+                ['key' => 'usertype', 'label' => 'User Type'],
+                ['key' => 'phone', 'label' => 'Phone'],
+                ['key' => 'address', 'label' => 'Address'],
+                ['key' => 'actions', 'label' => 'Actions'],
+            ];
+        @endphp
+
+        <x-mary-header title="USERS" with-anchor separator />
+        <x-mary-table :headers="$headers" :rows="$users" striped >
+            @foreach($users as $user)
+                @scope('actions', $user)
+                <div class="flex">
+                    <x-mary-button icon="o-trash" wire:click="delete({{ $user->id }})" class="btn-sm" />
+                    <x-mary-button icon="o-pencil" wire:click="edit({{ $user->id }})" class="btn-sm" />
+                </div>
+                @endscope
+            @endforeach
+        </x-mary-table>
+
+        <x-mary-modal title="Edit User" wire:model="showEditModal">
+            <x-mary-form wire:submit="update">
+                <x-mary-input wire:model="name" label="Name" />
+                <x-mary-input wire:model="email" label="E-mail Address" />
+                <x-mary-input wire:model="phone" label="Phone" />
+
+                <x-slot:actions>    
+                    <x-mary-button wire:click="closeModal" class="btn btn-primary" label="Cancel" />
+                    <x-mary-button type="submit" class="btn btn-success" label="Save" />
+                </x-slot:actions>
+            </x-mary-form>
+        </x-mary-modal>
+            {{-- <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
@@ -96,10 +134,10 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> --}}
 
             <!-- Delete User Confirmation Modal -->
-            @if($confirmingUserDeletion)
+            {{-- @if($confirmingUserDeletion)
                 <div class="fixed z-10 inset-0 overflow-y-auto" x-show="confirmingUserDeletion">
                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
@@ -134,7 +172,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            @endif --}}
         </x-slot>
     </x-mary-main>
 </div>
