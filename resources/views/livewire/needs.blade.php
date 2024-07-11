@@ -26,41 +26,40 @@
         {{-- CONTENT --}}
         <x-slot:content>
             
-            <div class="overflow-x-auto">
-                <div class="p-4">
-                    <h2 class="font-semibold text-primary mb-4">Needs List</h2>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden"> <!-- Added shadow-xl for pronounced shadow -->
-                        <table class="min-w-full table-auto">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th class="px-4 py-2">ID</th>
-                                    <th class="px-4 py-2">Need Name</th>
-                                    <th class="px-4 py-2">Quantity Required</th>
-                                    <th class="px-4 py-2">Unit</th>
-                                    <th class="px-4 py-2">Need Type</th>
-                                    <th class="px-4 py-2">Fulfilled</th>
-                                    <th class="px-4 py-2">Created At</th>
-                                    <th class="px-4 py-2">Updated At</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-secondary">
-                                @foreach ($needs as $need)
-                                <tr>
-                                    <td class="px-4 py-2">{{ $need->id }}</td>
-                                    <td class="px-4 py-2">{{ $need->need_name }}</td>
-                                    <td class="px-4 py-2">{{ $need->quantity_required }}</td>
-                                    <td class="px-4 py-2">{{ $need->unit }}</td>
-                                    <td class="px-4 py-2">{{ $need->need_type }}</td>
-                                    <td class="px-4 py-2">{{ $need->fulfilled ? 'Yes' : 'No' }}</td>
-                                    <td class="px-4 py-2">{{ $need->created_at->toFormattedDateString() }}</td>
-                                    <td class="px-4 py-2">{{ $need->updated_at->toFormattedDateString() }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+        <div class="overflow-x-auto">
+            <div class="p-4">
+                <h2 class="font-semibold text-primary mb-4">Needs List</h2>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <table class="min-w-full table-auto">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th class="px-4 py-2">Need Name</th>
+                                <th class="px-4 py-2">Quantity Required</th>
+                                <th class="px-4 py-2">Unit</th>
+                                <th class="px-4 py-2">Need Type</th>
+                                <th class="px-4 py-2">Fulfilled</th>
+                                <th class="px-4 py-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-secondary">
+                            @foreach ($needs as $need)
+                            <tr>
+                                <td class="px-4 py-2">{{ $need->need_name }}</td>
+                                <td class="px-4 py-2">{{ $need->quantity_required }}</td>
+                                <td class="px-4 py-2">{{ $need->unit }}</td>
+                                <td class="px-4 py-2">{{ $need->need_type }}</td>
+                                <td class="px-4 py-2">{{ $need->fulfilled ? 'Yes' : 'No' }}</td>
+                                <td class="px-4 py-2">
+                                    <a href="{{ route('donate-form', ['need' => $need->id]) }}" class="btn-primary">Donate</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $needs->links() }}
                 </div>
             </div>
+        </div>
         </x-slot:content>
         
         

@@ -21,14 +21,13 @@ class Dashboard extends Component
     {
         $donation = Donation::find($donationId);
         if ($donation) {
-            $donation->admin_approved = true; // Mark donation as approved
+            $donation->admin_approved = true;
             $donation->save();
         }
     }
+
     public function render()
     {
-        return view('livewire.admin.dashboard', [
-            'donations' => $this->donations,
-        ]);
+        return view('livewire.admin.dashboard');
     }
 }

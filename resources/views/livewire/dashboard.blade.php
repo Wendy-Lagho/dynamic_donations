@@ -244,6 +244,27 @@
 
 <body>
     <div>
+        <x-mary-nav sticky full-width>
+         
+            <x-slot:brand>
+                {{-- Drawer toggle for "main-drawer" --}}
+                <label for="main-drawer" class="lg:hidden mr-3">
+                    <x-mary-icon name="o-bars-3" class="cursor-pointer" />
+                </label>
+     
+                {{-- Brand --}}
+                <div class="text-primary">Dynamic Donations</div>
+            </x-slot:brand>
+     
+            {{-- Right side actions --}}
+            <x-slot:actions>
+                <x-mary-button label="Home" link="" class="btn-ghost btn-sm text-primary" responsive />
+                <x-mary-button label="About Us" link="#About-Us" class="btn-ghost btn-sm text-primary" responsive />
+                <x-mary-button label="Reviews" link="#Reviews" class="btn-ghost btn-sm text-primary" responsive />
+                <x-mary-button label="Contact Us" link="#Contact-Us" class="btn-ghost btn-sm text-primary" responsive />
+            </x-slot:actions>
+        </x-mary-nav>
+    
         <x-mary-main full-width>
             {{-- SIDEBAR --}}
             <x-slot:sidebar drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
@@ -349,7 +370,7 @@
 
                             <div class="help-text3">
                                 <img src="{{ asset('img/children-running.jpg') }}" alt="">
-                                    <p class="join-link"><a href="">Join Team</a></p>
+                                    <p class="join-link"><a href="{{ route('volunteering') }}">Join Team</a></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, provident amet optio voluptate 
                                         rerum vitae est aperiam sint itaque quo eveniet nemo perferendis eius cumque.</p>
                             </div>

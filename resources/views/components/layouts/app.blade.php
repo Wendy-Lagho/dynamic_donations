@@ -4,26 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>{{ $title ?? 'Dynamic Donations' }}</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
         
         <body class="font-sans antialiased">
  
-            {{-- The navbar with `sticky` and `full-width` --}}
+            {{-- The navbar with `sticky` and `full-width` 
             <x-mary-nav sticky full-width>
          
                 <x-slot:brand>
-                    {{-- Drawer toggle for "main-drawer" --}}
+                    {{-- Drawer toggle for "main-drawer" 
                     <label for="main-drawer" class="lg:hidden mr-3">
                         <x-mary-icon name="o-bars-3" class="cursor-pointer" />
                     </label>
          
-                    {{-- Brand --}}
+                    {{-- Brand 
                     <div class="text-primary">Dynamic Donations</div>
                 </x-slot:brand>
          
-                {{-- Right side actions --}}
+                {{-- Right side actions 
                 <x-slot:actions>
                     <x-mary-button label="Home" link="" class="btn-ghost btn-sm text-primary" responsive />
                     <x-mary-button label="About Us" link="#About-Us" class="btn-ghost btn-sm text-primary" responsive />
@@ -44,4 +48,6 @@
             {{--  TOAST area --}}
             <x-mary-toast />
         </body>
+</html>
+
         

@@ -1,6 +1,6 @@
 <div>
     <x-mary-main full-width>
-        <x-slot:sidebar drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
+        <x-slot name="sidebar" drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
             <x-mary-menu activate-by-route>
                 {{-- User --}}
                 @if($user = auth()->user())
@@ -8,22 +8,27 @@
                     <x-mary-list-item :item="$user" value="name" sub-value="email" no-separator no-hover class="-mx-2 !-my-2 rounded"></x-mary-list-item>
                     <x-mary-menu-separator />
                 @endif
-                <x-mary-menu-item title="View Users" icon="o-eye" link="/admin/view-users" />
-                <x-mary-menu-item title="View Donations" icon="o-gift" link="/admin/view-donatios" />
-                <x-mary-menu-item title="View Needs" icon="o-list-bullet" link="/admin/view-needs" />
-                <x-mary-menu-item title="View Blog" icon="o-newspaper" link="/admin/view-blog" />
-                <x-mary-menu-item title="Notifications" icon="o-cog-6-tooth" link="/admin/admin-notifications" />
+                <x-mary-menu-item title="View Users" icon="o-eye" link="{{ route('admin.view-users') }}" />
+                <x-mary-menu-item title="View Donations" icon="o-gift" link="{{ route('admin.view-donations') }}" />
+                <x-mary-menu-item title="View Needs" icon="o-list-bullet" link="{{ route('admin.view-needs') }}" />
+                <x-mary-menu-item title="View Blog" icon="o-newspaper" link="{{ route('admin.view-blog') }}" />
+                <x-mary-menu-item title="Notifications" icon="o-bell" link="{{ route('admin.admin-notifications') }}" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-mary-menu-item title="Log out" icon="o-power" link="/logout" />
+                    <x-mary-menu-item title="Log out" icon="o-power" link="{{ route('logout') }}" />
                     <x-mary-menu-item title="Change Theme" icon="o-moon">
                         <x-mary-theme-toggle darkTheme="coffee" lightTheme="bumblebee" />
                     </x-mary-menu-item>
                 </x-mary-menu-sub>
             </x-mary-menu>
-        </x-slot:sidebar>
+        </x-slot>
+        <x-slot name="content">
+           
+        </x-slot>
+    </x-mary-main>
+</div>
 
-        <x-slot:content>
-            <div class="flex-1">
+        
+            {{-- <div class="flex-1">
                 <div class="content-wrapper p-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-brown-500 text-white rounded-lg shadow-lg p-6">
@@ -94,7 +99,28 @@
                         @endif
                     </div>
                 </div>
-            </div>
-        </x-slot:content>
-    </x-mary-main>
-</div>
+            </div> --}}
+            {{-- <div class="flex-1">
+                <div class="content-wrapper p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Your existing stats cards, for example: -->
+                        <div class="bg-brown-500 text-white rounded-lg shadow-lg p-6">
+                            <div class="relative">
+                                <h4 class="font-semibold text-lg mb-2">Weekly Donations <i class="mdi mdi-currency-usd mdi-24px float-right"></i></h4>
+                                <h2 class="text-3xl font-bold mb-3">$ 15,000</h2>
+                                <p class="text-sm">Increased by 60%</p>
+                            </div>
+                        </div>
+                        <!-- More cards as needed -->
+                    </div>
+        
+                    <div>
+                        <x-mary-header title="Registered System Users" separator />
+                        <livewire:chart.admin.bar />
+        
+                        <x-mary-header title="Donation Status" separator />
+                        <livewire:chart.admin.pie />
+                    </div>
+                </div>
+            </div> --}}
+
