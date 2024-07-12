@@ -90,7 +90,7 @@
             <!-- donate-form.blade.php -->
 
 <!-- resources/views/livewire/donate-form.blade.php -->
-        <div>
+        {{-- <div>
             <h2>Donate to {{ $selectedNeed->need_name }}</h2>
 
             <form wire:submit.prevent="submitDonation">
@@ -124,7 +124,8 @@
                     <button type="button" wire:click="donateAnotherItem">Donate Another Item</button>
                 </div>
             </form>
-        </div>
+        </div> --}}
+        Be like water. 
 
         </x-slot:content>
 
