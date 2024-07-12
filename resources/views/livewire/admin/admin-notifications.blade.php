@@ -8,11 +8,11 @@
                 <x-mary-list-item :item="$user" value="name" sub-value="email" no-separator no-hover class="-mx-2 !-my-2 rounded"></x-mary-list-item>
                 <x-mary-menu-separator />
             @endif
-            <x-mary-menu-item title="View Users" icon="o-eye" link="/admin/view-users" />
-            <x-mary-menu-item title="View Donations" icon="o-gift" link="/admin/view-donatios" />
-            <x-mary-menu-item title="View Needs" icon="o-list-bullet" link="/admin/view-needs" />
-            <x-mary-menu-item title="View Blog" icon="o-newspaper" link="/admin/view-blog" />
-            <x-mary-menu-item title="Notifications" icon="o-cog-6-tooth" link="/admin/notifications" />
+            <x-mary-menu-item title="Manage Users" icon="o-eye" link="/admin/view-users" />
+                <x-mary-menu-item title="Manage Donations" icon="o-gift" link="/admin/view-donations" /> <!-- Corrected typo in link -->
+                <x-mary-menu-item title="Manage Needs" icon="o-list-bullet" link="/admin/view-needs" />
+                <x-mary-menu-item title="Managae Blog" icon="o-newspaper" link="/admin/view-blog" />
+                <x-mary-menu-item title="Notifications" icon="o-bell" link="/admin/admin-notifications" />
             <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
                 <x-mary-menu-item title="Log out" icon="o-power" link="/logout" />
                 <x-mary-menu-item title="Change Theme" icon="o-moon">

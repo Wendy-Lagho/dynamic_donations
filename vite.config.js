@@ -11,4 +11,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        watch: {
+            ignored: ['**/node_modules/**', '**/vendor/**', '**/storage/**'],
+        },
+    },
+    optimizeDeps: {
+        include: ['vue', 'alpinejs'], // Add any other frequently used libraries
+    },
 });

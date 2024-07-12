@@ -3,7 +3,7 @@
 namespace App\Livewire\Chart\Admin;
 
 use Livewire\Component;
-use App\Models\Donation;
+use App\Models\User;
 
 class Pie extends Component
 {
@@ -11,18 +11,28 @@ class Pie extends Component
 
     public function mount()
     {
-        $statuses = Donation::selectRaw('status, COUNT(*) as count')
-            ->groupBy('status')
-            ->get();
+        $this->data = $this->lineChart();
+    }
 
-        $this->data = [
-            'labels' => $statuses->pluck('status')->toArray(),
-            'data' => $statuses->pluck('count')->toArray(),
+    public function lineChart()
+    {
+        $userCounts = User::query()
+            ->selectRaw('usertype, COUNT(*) as count')
+            ->groupBy('usertype')
+            ->get()
+            ->pluck('count', 'usertype');
+
+        // Prepare the data for the chart
+        $data = [
+            'labels' => $userCounts->keys()->all(),
+            'data' => $userCounts->values()->all(),
         ];
+
+        return $data;
     }
 
     public function render()
     {
-        return view('livewire.chart.admin.pie');
+        return view('livewire.chart.admin.pie', ['data' => $this->data]);
     }
 }
