@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\ProfileController;
@@ -16,8 +17,11 @@ use App\Livewire\VolunteerOpportunities;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\ViewBlog;
 use App\Livewire\Admin\ViewNeeds;
+use App\Livewire\Admin\AddNeed;
 use App\Livewire\Admin\ViewUsers;
+use App\Livewire\Admin\AddUser;
 use App\Livewire\Admin\ViewDonations;
+use App\Livewire\Admin\AddDonation;
 use App\Livewire\Admin\AdminNotifications;
 
 
@@ -38,8 +42,11 @@ Route::get('/', function () {
     Route::get('admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
     Route::get('admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
     Route::get('admin/view-users', ViewUsers::class)->name('admin.view-users');
+    Route::get('admin/add-user', AddUser::class)->name('admin.add-user');
     Route::get('admin/view-donations', ViewDonations::class)->name('admin.view-donations');
+    Route::get('admin/add-donation', AddDonation::class)->name('admin.add-donation');
     Route::get('admin/view-needs', ViewNeeds::class)->name('admin.view-needs');
+    Route::get('admin/add-need', AddNeed::class)->name('admin.add-need');
     Route::get('admin/view-blog', ViewBlog::class)->name('admin.view-blog');
     Route::get('admin/admin-notifications', AdminNotifications::class)->name('admin.admin-notifications');
     });
