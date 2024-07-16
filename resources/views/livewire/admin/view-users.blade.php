@@ -41,10 +41,10 @@
             ];
         @endphp
 
-        <x-mary-header title="USERS" with-anchor separator />
+        <x-mary-header title="USERS" with-anchor separator class="text-primary"/>
 
-        <x-mary-button label="Add User" icon="o-plus" wire:click="create" class="btn btn-primary" /> 
-        <x-mary-table :headers="$headers" :rows="$users" striped>
+        <x-mary-button label="Add User" icon="o-plus" wire:click="create" class="btn bg-primary text-white" /> 
+        <x-mary-table :headers="$headers" :rows="$users" striped >
             @foreach($users as $user)
                 @scope('actions', $user)
                 <div class="flex">
