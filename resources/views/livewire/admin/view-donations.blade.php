@@ -9,7 +9,7 @@
                     <x-mary-menu-separator />
                 @endif
                 <x-mary-menu-item title="Manage Users" icon="o-eye" link="/admin/view-users" />
-                <x-mary-menu-item title="Manage Donations" icon="o-gift" link="/admin/view-donations" /> <!-- Corrected typo in link -->
+                <x-mary-menu-item title="Manage Donations" icon="o-gift" link="/admin/view-donations" />
                 <x-mary-menu-item title="Manage Needs" icon="o-list-bullet" link="/admin/view-needs" />
                 <x-mary-menu-item title="Manage Blog" icon="o-newspaper" link="/admin/view-blog" />
                 <x-mary-menu-item title="Notifications" icon="o-bell" link="/admin/admin-notifications" />
