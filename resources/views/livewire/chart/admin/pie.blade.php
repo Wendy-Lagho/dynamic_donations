@@ -1,5 +1,5 @@
 <div>
-    <div style="width: 80%; margin: auto;">
+    <div style="width: 50%; margin: auto;">
         <canvas id="lineChart"></canvas>
     </div>
 
@@ -11,7 +11,7 @@
             data: {
                 labels: @json($data['labels']),
                 datasets: [{
-                    label: 'Vehicle Type',
+                    label: 'User Type',
                     data: @json($data['data']),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.5)', // Light red
