@@ -1,5 +1,5 @@
 <div>
-    <div style="width: 80%; margin: auto;">
+    <div style="width: 100%; margin: auto;">
         <canvas id="donationBarChart"></canvas>
     </div>
 
