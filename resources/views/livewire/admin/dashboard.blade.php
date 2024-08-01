@@ -1,18 +1,38 @@
 <div>
+    <x-mary-nav sticky full-width>
+        <x-slot:brand>
+            <label for="main-drawer" class="lg:hidden mr-3">
+                <x-mary-icon name="o-bars-3" class="cursor-pointer" />
+            </label>
+            <div class="text-primary">Dynamic Donations</div>
+        </x-slot:brand>
+
+        <x-slot:actions>
+            <x-mary-button label="Dashboard" link="{{ route('admin.dashboard') }}" class="btn-ghost btn-sm text-primary"
+                responsive />
+            <x-mary-button label="Volunteer Activities" link="{{ route('admin.volunteer-activities') }}"
+                class="btn-ghost btn-sm text-primary" responsive />
+            <x-mary-button label="Blog" link="{{ route('admin.view-blog') }}" class="btn-ghost btn-sm text-primary"
+                responsive />
+        </x-slot:actions>
+    </x-mary-nav>
+
     <x-mary-main full-width>
         <x-slot name="sidebar" drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
             <x-mary-menu activate-by-route>
                 {{-- User --}}
-                @if($user = auth()->user())
+                @if ($user = auth()->user())
                     <x-mary-menu-separator />
-                    <x-mary-list-item :item="$user" value="name" sub-value="email" no-separator no-hover class="-mx-2 !-my-2 rounded"></x-mary-list-item>
+                    <x-mary-list-item :item="$user" value="name" sub-value="email" no-separator no-hover
+                        class="-mx-2 !-my-2 rounded"></x-mary-list-item>
                     <x-mary-menu-separator />
                 @endif
                 <x-mary-menu-item title="Manage Users" icon="o-eye" link="{{ route('admin.view-users') }}" />
                 <x-mary-menu-item title="Manage Donations" icon="o-gift" link="{{ route('admin.view-donations') }}" />
                 <x-mary-menu-item title="Manage Needs" icon="o-list-bullet" link="{{ route('admin.view-needs') }}" />
                 <x-mary-menu-item title="Manage Blog" icon="o-newspaper" link="{{ route('admin.view-blog') }}" />
-                <x-mary-menu-item title="Notifications" icon="o-bell" link="{{ route('admin.admin-notifications') }}" />
+                <x-mary-menu-item title="Notifications" icon="o-bell"
+                    link="{{ route('admin.admin-notifications') }}" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="Log out" icon="o-power" link="{{ route('logout') }}" />
                     <x-mary-menu-item title="Change Theme" icon="o-moon">
@@ -23,110 +43,54 @@
         </x-slot>
         <x-slot name="content">
             <div>
-                <x-mary-header title="Donations" separator />
-                <livewire:chart.admin.bar />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <x-mary-header title="Donations" class="text-primary" />
+                        <livewire:chart.admin.bar />
+                    </div>
+                    <div>
+                        <x-mary-header title="Users" class="text-primary" />
+                        <livewire:chart.admin.pie />
+                    </div>
+                </div>
+                <div>
+                    <x-mary-header title="Payments" class="text-primary" separator />
+                    <livewire:chart.admin.line />
+                </div>
 
-                <x-mary-header title="Users" separator />
-                <livewire:chart.admin.pie />
+                <!-- Footer -->
+                <footer class="w-full mt-5 bg-primary text-white px-4 py-8 rounded-lg">
+                    <div class="container mx-auto flex flex-wrap justify-between items-start">
+                        <div class="footer-logo mb-4 md:mb-0 w-full md:w-1/3" style="height = 30px">
+                            <img src="{{ asset('img/logo-text-white.png') }}" alt="Logo" class="max-h-48 w-auto"
+                                style="max-width: 200px !important; max-height: 200px !important; width: auto !important; height: auto !important;">
+                        </div>
+                        <div class="footer-links mb-4 md:mb-0 w-full md:w-1/3">
+                            <ul class="list-none p-0 m-0 flex flex-col space-y-2">
+                                <li><a href="{{ route('dashboard') }}"
+                                        class="text-white hover:underline font-['American_Typewriter']">Dashboard</a>
+                                </li>
+                                <li><a href="{{ route('needs') }}"
+                                        class="text-white hover:underline font-['American_Typewriter']">Need
+                                        Catalogue</a></li>
+                                <li><a href="{{ route('donate-form') }}"
+                                        class="text-white hover:underline font-['American_Typewriter']">Donate</a></li>
+                                <li><a href="{{ route('blog-name') }}"
+                                        class="text-white hover:underline font-['American_Typewriter']">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-location text-right w-full md:w-1/3">
+                            <p class="mb-1 font-['Telugu_MN']">Address: 123 Strathmore University, Nairobi, Kenya</p>
+                            <p class="mb-1 font-['Telugu_MN']">Email: <a href="mailto:info@dynamicdonations.com"
+                                    class="text-white hover:underline">info@dynamicdonations.com</a></p>
+                            <p class="mb-1 font-['Telugu_MN']">Phone: <a href="tel:+254712345678"
+                                    class="text-white hover:underline">+254 (0) 712 345 678</a></p>
+                            <p class="mb-1 font-['Telugu_MN']">Copyright Wendy Lagho, Caleb Chemwa</p>
+                            <p class="font-['Telugu_MN']">All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </x-slot>
     </x-mary-main>
 </div>
-
-        
-            {{-- <div class="flex-1">
-                <div class="content-wrapper p-6">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-brown-500 text-white rounded-lg shadow-lg p-6">
-                            <div class="relative">
-                                <h4 class="font-semibold text-lg mb-2">Weekly Donations <i class="mdi mdi-currency-usd mdi-24px float-right"></i></h4>
-                                <h2 class="text-3xl font-bold mb-3">$ 15,000</h2>
-                                <p class="text-sm">Increased by 60%</p>
-                            </div>
-                        </div>
-                        <div class="bg-beige-500 text-black rounded-lg shadow-lg p-6">
-                            <div class="relative">
-                                <h4 class="font-semibold text-lg mb-2">New Donors <i class="mdi mdi-account-outline mdi-24px float-right"></i></h4>
-                                <h2 class="text-3xl font-bold mb-3">45</h2>
-                                <p class="text-sm">Decreased by 10%</p>
-                            </div>
-                        </div>
-                        <div class="bg-brown-700 text-white rounded-lg shadow-lg p-6">
-                            <div class="relative">
-                                <h4 class="font-semibold text-lg mb-2">Active Campaigns <i class="mdi mdi-bullhorn mdi-24px float-right"></i></h4>
-                                <h2 class="text-3xl font-bold mb-3">12</h2>
-                                <p class="text-sm">Increased by 5%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        @if($donations->isNotEmpty())
-                            <div class="p-4">
-                                <h2 class="font-semibold text-primary mb-4">Donation History</h2>
-                                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                                    <table class="min-w-full">
-                                        <thead class="bg-primary text-white">
-                                            <tr>
-                                                <th class="py-2 px-4">Date</th>
-                                                <th class="py-2 px-4">Quantity</th>
-                                                <th class="py-2 px-4">Unit</th>
-                                                <th class="py-2 px-4">Status</th>
-                                                <th class="py-2 px-4">Comments</th>
-                                                <th class="py-2 px-4">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-secondary">
-                                            @foreach($donations as $donation)
-                                                <tr class="border-b border-gray-200">
-                                                    <td class="py-3 px-4">{{ $donation->donation_date->format('M d, Y') }}</td>
-                                                    <td class="py-3 px-4">{{ $donation->quantity }}</td>
-                                                    <td class="py-3 px-4">{{ $donation->unit }}</td>
-                                                    <td class="py-3 px-4">{{ $donation->status }}</td>
-                                                    <td class="py-3 px-4">{{ $donation->comments ?: '-' }}</td>
-                                                    <td class="py-3 px-4">
-                                                        @if(!$donation->admin_approved)
-                                                            <button wire:click="approveDonation({{ $donation->id }})" class="bg-green-500 text-white px-3 py-1 rounded">Approve</button>
-                                                        @else
-                                                            <span class="text-green-500">Approved</span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        @else
-                            <div class="p-4">
-                                <h2 class="font-semibold text-primary">Donation History</h2>
-                                <p class="mt-4 text-secondary">There are no donations yet.</p>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="flex-1">
-                <div class="content-wrapper p-6">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Your existing stats cards, for example: -->
-                        <div class="bg-brown-500 text-white rounded-lg shadow-lg p-6">
-                            <div class="relative">
-                                <h4 class="font-semibold text-lg mb-2">Weekly Donations <i class="mdi mdi-currency-usd mdi-24px float-right"></i></h4>
-                                <h2 class="text-3xl font-bold mb-3">$ 15,000</h2>
-                                <p class="text-sm">Increased by 60%</p>
-                            </div>
-                        </div>
-                        <!-- More cards as needed -->
-                    </div>
-        
-                    <div>
-                        <x-mary-header title="Registered System Users" separator />
-                        <livewire:chart.admin.bar />
-        
-                        <x-mary-header title="Donation Status" separator />
-                        <livewire:chart.admin.pie />
-                    </div>
-                </div>
-            </div> --}}
-
